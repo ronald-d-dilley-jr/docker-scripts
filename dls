@@ -1,0 +1,21 @@
+#!/bin/bash
+
+#clear
+echo '-------------------------------------------------------------------------------------------------------------------------' | sed -e 's/.*/\x1b[38;5;31m&\x1b[0m/i'
+
+docker image ls | sed \
+    -e 's/REPOSITORY/\x1b[38;5;16;48;5;68m&\x1b[0m/i' \
+    -e 's/TAG/\x1b[38;5;16;48;5;68m&\x1b[0m/i' \
+    -e 's/IMAGE ID/\x1b[38;5;16;48;5;68m&\x1b[0m/i' \
+    -e 's/CREATED/\x1b[38;5;16;48;5;68m&\x1b[0m/i' \
+    -e 's/SIZE/\x1b[38;5;16;48;5;68m&\x1b[0m/i' \
+    -e 's/^.*.usgs.gov.*/\x1b[38;5;75m&\x1b[0m/i' \
+    -e 's/^alpine.* latest .*/\x1b[38;5;34m&\x1b[0m/i' \
+    -e 's/^centos.* latest .*/\x1b[38;5;34m&\x1b[0m/i' \
+    -e 's/^ubuntu.* latest .*/\x1b[38;5;34m&\x1b[0m/i' \
+    -e 's/^.* latest .*/\x1b[38;5;89m&\x1b[0m/i' \
+    -e 's/^.* <none> .*/\x1b[38;5;88m&\x1b[0m/i' \
+    -e 's/^ubuntu.*/\x1b[38;5;34m&\x1b[0m/i' \
+    -e 's/^centos.*/\x1b[38;5;34m&\x1b[0m/i' \
+    -e 's/^alpine.*/\x1b[38;5;34m&\x1b[0m/i' \
+    -e 's/^.*/\x1b[38;5;31m&\x1b[0m/i'

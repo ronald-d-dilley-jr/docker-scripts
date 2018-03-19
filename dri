@@ -1,0 +1,27 @@
+#!/bin/bash
+
+d_cmd=''
+noop=0
+ARGS=()
+for var in "$@"
+do
+    if [ "$var" != '--bash' -o "$var" != '--sh' -o "$var" != '--noop' ]; then
+        ARGS+=("$var")
+    fi
+
+    if [ "$var" == '--bash' ]; then
+        d_cmd="/bin/bash"
+    elif [ "$var" == '--sh' ]; then
+        d_cmd="/bin/sh"
+    elif [ "$var" == '--noop' ]; then
+        noop=1
+    fi
+done
+
+cmd="docker run --rm --tty --interactive ${ARGS[@]} $d_cmd"
+
+echo $cmd
+
+if [ $noop == 0 ]; then
+    $cmd
+fi
